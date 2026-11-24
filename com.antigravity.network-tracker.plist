@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  LaunchAgent template. `pnpm service:install` (scripts/install-service.sh) replaces
+  __PROJECT_DIR__ and __NODE_BIN__ automatically; edit by hand only if installing manually.
+  Secrets (WHATSAPP_*, NETWORK_TRACKER_*) belong in __PROJECT_DIR__/.env, which is loaded via
+  node's env-file flag below.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.antigravity.network-tracker</string>
+
+    <key>WorkingDirectory</key>
+    <string>__PROJECT_DIR__</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__NODE_BIN__</string>
+        <string>--no-warnings</string>
+        <string>--env-file-if-exists=__PROJECT_DIR__/.env</string>
+        <string>__PROJECT_DIR__/src/daemon.mjs</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>__PROJECT_DIR__/data/daemon.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>__PROJECT_DIR__/data/daemon_error.log</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>SCAN_INTERVAL_SEC</key>
+        <string>60</string>
+        <key>TOLERANCE_SCANS</key>
+        <string>2</string>
+    </dict>
+</dict>
+</plist>

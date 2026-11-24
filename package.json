@@ -1,0 +1,32 @@
+{
+  "name": "mcp-network-tracker",
+  "version": "1.0.0",
+  "description": "LAN scanner & device presence tracker (node:sqlite) with person tracking, optional WhatsApp alerts and an MCP server",
+  "main": "src/daemon.mjs",
+  "type": "module",
+  "scripts": {
+    "scan": "node --no-warnings --env-file-if-exists=.env src/cli.mjs scan",
+    "status": "node --no-warnings --env-file-if-exists=.env src/cli.mjs status",
+    "people": "node --no-warnings --env-file-if-exists=.env src/cli.mjs people",
+    "cli": "node --no-warnings --env-file-if-exists=.env src/cli.mjs",
+    "start": "node --no-warnings --env-file-if-exists=.env src/daemon.mjs",
+    "service:install": "bash scripts/install-service.sh",
+    "service:uninstall": "bash scripts/uninstall-service.sh",
+    "mcp": "node --no-warnings --env-file-if-exists=.env src/mcp_server.mjs",
+    "check": "for f in src/*.mjs; do node --check \"$f\" || exit 1; done"
+  },
+  "keywords": [
+    "network",
+    "scanner",
+    "arp",
+    "mcp",
+    "device-tracker",
+    "presence",
+    "model-context-protocol"
+  ],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=24"
+  }
+}

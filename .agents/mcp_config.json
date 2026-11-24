@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "network-tracker": {
+      "command": "node",
+      "args": [
+        "--no-warnings",
+        "--env-file-if-exists=/ABSOLUTE/PATH/TO/mcp-network-tracker/.env",
+        "/ABSOLUTE/PATH/TO/mcp-network-tracker/src/mcp_server.mjs"
+      ]
+    }
+  }
+}
